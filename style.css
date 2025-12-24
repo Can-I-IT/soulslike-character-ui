@@ -1,0 +1,315 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #111, #000);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 0;
+  color: #ddd;
+  font-family: "Georgia", serif;
+}
+
+.status-card {
+  width: 360px;
+  padding: 24px;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 14px;
+  box-shadow: 0 0 30px rgba(255, 120, 40, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+}
+
+.level {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.classes {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.classes button {
+  flex: 1;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.classes button:hover {
+  background: rgba(255, 120, 40, 0.15);
+  border-color: rgba(255, 120, 40, 0.4);
+  color: #fff;
+}
+
+.classes button.active {
+  background: rgba(255, 120, 40, 0.25);
+  box-shadow: 0 0 12px rgba(255, 120, 40, 0.4);
+}
+
+.class-tooltip {
+  margin-top: 14px;
+  padding: 12px;
+  background: rgba(10, 10, 10, 0.8);
+  border-left: 3px solid rgba(255, 120, 40, 0.6);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+}
+
+.class-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.class-tooltip h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  color: #f0c080;
+}
+
+.class-tooltip.locked {
+  border-left-color: rgba(180, 80, 40, 0.9);
+  box-shadow: 0 0 14px rgba(255, 120, 40, 0.35);
+}
+
+.class-tooltip .hint {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.equipment-panel {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(15, 15, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.4s ease;
+}
+
+.equipment-panel h3 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: #cfa060;
+  letter-spacing: 0.5px;
+}
+
+.equipment-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.equipment-panel li {
+  padding: 4px 0;
+  opacity: 0.85;
+}
+
+.equipment-panel.inactive {
+  max-height: 0;
+  opacity: 0;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+
+.equipment-panel.active {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.equipment-panel.active {
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.4s ease;
+}
+
+.gift-panel {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(12, 12, 12, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+.gift-panel h3 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: #bfa060;
+}
+
+.gift-panel.inactive {
+  max-height: 0;
+  opacity: 0;
+  filter: grayscale(100%);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.gift-panel.active {
+  max-height: 420px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.4s ease;
+}
+
+.gifts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.gifts button {
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.gifts button:hover {
+  background: rgba(255, 120, 40, 0.15);
+  border-color: rgba(255, 120, 40, 0.4);
+  color: #fff;
+}
+
+.gifts button.active {
+  background: rgba(255, 120, 40, 0.25);
+  box-shadow: 0 0 12px rgba(255, 120, 40, 0.4);
+}
+
+.gift-desc {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  min-height: 2.5em;
+}
+
+.gift-panel.locked {
+  box-shadow: 0 0 14px rgba(255, 120, 40, 0.25);
+}
+
+.gifts button.locked {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.gifts button.active {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.stat {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+input[type="range"] {
+  grid-column: 1 / -1;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 16px 0;
+}
+
+.derived p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+.begin-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 120, 40, 0.15);
+  border: 1px solid rgba(255, 120, 40, 0.4);
+  color: #eee;
+  font-family: inherit;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 8px;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+/* Subtle entrance for the whole card */
+.status-card {
+  transform: translateY(8px);
+  opacity: 0;
+  animation: cardEnter 420ms ease forwards;
+}
+
+@keyframes cardEnter {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.begin-btn.enabled {
+  opacity: 1;
+}
+
+.begin-btn:hover.enabled {
+  background: rgba(255, 120, 40, 0.3);
+  box-shadow: 0 0 16px rgba(255, 120, 40, 0.4);
+}
+
+/* Fade overlay */
+.fade-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.fade-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 2.5s ease;
+}
+
+.final-text {
+  color: #bbb;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.fade-overlay.show .final-text {
+  opacity: 1;
+}

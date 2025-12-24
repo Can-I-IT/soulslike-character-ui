@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bearer of the Curse</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="status-card">
+      <h1>Bearer of the Curse</h1>
+      <p class="level">Level <span id="level">1</span></p>
+
+      <div class="classes">
+        <button data-class="knight">Knight</button>
+        <button data-class="warrior">Warrior</button>
+        <button data-class="pyro">Pyromancer</button>
+        <button data-class="hollow">Hollow</button>
+      </div>
+
+      <div class="class-tooltip" id="classTooltip">
+        <p class="hint" id="classHint">Hover to inspect. Click to commit.</p>
+
+        <div class="equipment-panel inactive" id="equipmentPanel">
+          <h3>Starting Equipment</h3>
+          <ul id="equipmentList">
+            <li>—</li>
+          </ul>
+        </div>
+
+        <div class="gift-panel inactive" id="giftPanel">
+          <h3>Starting Gift</h3>
+          <div class="gifts">
+            <button data-gift="life">Life Ring</button>
+            <button data-gift="coin">Old Coin</button>
+            <button data-gift="seed">Fire Seed</button>
+            <button data-gift="none">None</button>
+          </div>
+          <p class="gift-desc" id="giftDesc">—</p>
+        </div>
+
+        <h3 id="className">Knight</h3>
+        <p id="classDesc">
+          A disciplined warrior sworn to forgotten oaths. Balanced in strength
+          and endurance.
+        </p>
+      </div>
+
+      <div class="stat">
+        <label>Vitality</label>
+        <input type="range" min="1" max="50" value="10" data-stat="vit" />
+        <span id="vit">10</span>
+      </div>
+
+      <div class="stat">
+        <label>Endurance</label>
+        <input type="range" min="1" max="50" value="10" data-stat="end" />
+        <span id="end">10</span>
+      </div>
+
+      <div class="stat">
+        <label>Strength</label>
+        <input type="range" min="1" max="50" value="10" data-stat="str" />
+        <span id="str">10</span>
+      </div>
+
+      <hr />
+
+      <div class="derived">
+        <p>HP: <span id="hp">0</span></p>
+        <p>Stamina: <span id="stamina">0</span></p>
+      </div>
+
+      <button class="begin-btn" id="beginBtn" disabled>Begin Journey</button>
+
+      <div class="fade-overlay" id="fadeOverlay">
+        <p class="final-text">Your journey begins…</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
